@@ -1,22 +1,39 @@
 # AXIOM-XIII CODEOWNERS
 #
-# This file intentionally contains no wildcard owner until the repository owner
-# assigns valid GitHub users or teams. Section 73.3 of the master specification
-# requires every directory to have named human code owners; AI agents may never
-# be the sole owner or approver of a critical system.
-#
-# Before implementation begins, replace this placeholder with valid ownership,
-# including more restrictive ownership for:
-# - production signing and release infrastructure
-# - wallet custody and recovery
-# - chain validator operations
-# - anti-cheat and fraud systems
-# - secure boot, firmware, kernel, and driver internals
-# - proprietary model weights and restricted evaluation data
-#
-# Example only:
-# *                       @organization/core-maintainers
-# /engine/render/         @organization/rendering
-# /chain/                 @organization/chain-security
-# /pyramid/               @organization/pyramid-platform
-# /.github/workflows/     @organization/security-release
+# Initial bootstrap ownership. Replace or expand these entries with named teams
+# as the engineering organization is staffed. AI agents may never be the sole
+# owner or approver of a critical system.
+
+*                               @ocean824
+
+# Governance, requirements, and source of truth
+/docs/source/                   @ocean824
+/docs/requirements/             @ocean824
+/docs/adr/                      @ocean824
+/docs/rfc/                      @ocean824
+/LICENSE                        @ocean824
+/LICENSES/                      @ocean824
+
+# Security-sensitive systems
+/.github/workflows/             @ocean824
+/docs/security/                 @ocean824
+/ai/capability-broker/          @ocean824
+/ai/gauntlet/                   @ocean824
+/chain/                         @ocean824
+/services/payments/             @ocean824
+/services/ledger/               @ocean824
+/services/arena/                @ocean824
+/pyramid/firmware/              @ocean824
+/pyramid/kernel-experimental/   @ocean824
+/pyramid/gpu-experimental/      @ocean824
+/pyramid/secure-transport/      @ocean824
+/infra/production/              @ocean824
+/infra/disaster-recovery/       @ocean824
+
+# Proprietary core architecture
+/engine/                        @ocean824
+/ai/                            @ocean824
+/connect/                       @ocean824
+/bridge/                        @ocean824
+/protocol/                      @ocean824
+/pyramid/                       @ocean824
