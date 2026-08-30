@@ -1,7 +1,7 @@
 {
   "project": "AXIOM-XIII",
   "version": "V1.0 Draft",
-  "repository_status": "documentation-first bootstrap",
+  "repository_status": "build-complete V1 architecture and implementation-control repository",
   "confidentiality": "proprietary-private",
   "canonical_source": {
     "path": "docs/source/AXIOM-XIII-V1-Master-Specification.md",
@@ -12,13 +12,16 @@
   "entrypoints": {
     "human": "README.md",
     "codespring": "CODESPRING.md",
+    "agents": "AGENTS.md",
+    "owner_directive": "docs/source/OWNER-DIRECTIVE-V1-BUILD-COMPLETE.md",
+    "domain_corpus": "docs/domains/README.md",
     "architecture": "docs/architecture/system-map.md",
     "analysis": "docs/analysis/deep-analysis.md",
     "requirements": "docs/requirements/requirements-register.md",
     "acceptance": "docs/requirements/acceptance-matrix.md",
     "risks": "docs/requirements/risk-register.md",
     "roadmap": "docs/roadmap/implementation-roadmap.md",
-    "tickets": "docs/roadmap/initial-100-tickets.md",
+    "tickets": "docs/roadmap/v1-160-tickets.md",
     "adrs": "docs/adr/README.md",
     "threat_model": "docs/security/threat-model-v0.md",
     "provenance_policy": "docs/legal/provenance-and-license-policy-v0.md"
@@ -38,12 +41,12 @@
     "develop"
   ],
   "counts": {
-    "master_requirements": 48,
+    "build_complete_v1_requirements": 72,
     "mandatory_open_adrs": 25,
-    "initial_tickets": 100,
+    "v1_implementation_tickets": 160,
     "roadmap_phases": 11
   },
-  "implementation_authority": {
+  "automatic_agent_activation_authority": {
     "production_deployment": false,
     "token_issuance": false,
     "wallet_custody": false,

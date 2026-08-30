@@ -6,9 +6,9 @@ State the parent requirement IDs, backlog or issue IDs, and ADR/RFC links.
 
 Describe the observable outcome, included behavior, and explicit exclusions.
 
-## Maturity class
+## V1 status dimensions
 
-State whether the change is **V1-PRODUCTION**, **V1-PREVIEW**, **V1-EXPERIMENTAL**, or **V1-ARCHITECTED**.
+State the **build status** (Accepted, In Progress, Implemented, or Verified), **assurance state** (Prototype, Integrated, Verified, Audited, or Production-Qualified), **activation state** (Local, Sandbox, Testnet, Pilot, Region-Limited, Production-Enabled, or Disabled-by-Policy), **economic effect** (No Value, Simulated, Test Value, or Real Value), and any **replacement state** for proprietary kernel/driver/crypto/transport/media/filesystem work. No activation or replacement gate may be used to defer mandatory V1 construction.
 
 ## Architecture and dependencies
 
@@ -54,4 +54,5 @@ List failed checks, unsupported cases, assumptions, follow-up work, and decision
 - [ ] I did not bypass or weaken required verification.
 - [ ] I did not make an unresolved ADR decision implicitly.
 - [ ] I preserved the canonical master specification.
-- [ ] I verified that experimental work is not used as a production dependency.
+- [ ] I advanced mandatory V1 implementation even where activation or production replacement remains gated.
+- [ ] I did not promote an unaudited experimental implementation into a production dependency.

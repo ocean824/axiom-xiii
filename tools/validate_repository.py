@@ -17,16 +17,22 @@ LOCKED_NAVIGATION = "GAMES · MEDIA · SOCIAL · DEV · STORE · PROFILE · WALL
 REQUIRED_FILES = [
     ROOT / "README.md",
     ROOT / "CODESPRING.md",
+    ROOT / "AGENTS.md",
     ROOT / "LICENSE",
     ROOT / "SECURITY.md",
     ROOT / "CONTRIBUTING.md",
     ROOT / "CODEOWNERS",
+    ROOT / "docs/source/OWNER-DIRECTIVE-V1-BUILD-COMPLETE.md",
     ROOT / "docs/analysis/deep-analysis.md",
     ROOT / "docs/architecture/system-map.md",
+    ROOT / "docs/domains/README.md",
     ROOT / "docs/requirements/requirements-register.md",
     ROOT / "docs/roadmap/implementation-roadmap.md",
+    ROOT / "docs/roadmap/v1-160-tickets.md",
+    ROOT / ".agents/PROJECT_MEMORY.md",
     ROOT / "docs/security/threat-model-v0.md",
     ROOT / "docs/legal/provenance-and-license-policy-v0.md",
+    ROOT / "docs/validation/repository-readiness.md",
 ]
 
 REQUIRED_DIRECTORIES = [
@@ -103,6 +109,11 @@ def validate() -> list[str]:
             manifest_sha = manifest.get("canonical_source", {}).get("sha256")
             if manifest_sha != EXPECTED_MASTER_SHA256:
                 fail("Bootstrap manifest contains the wrong canonical source checksum", errors)
+            counts = manifest.get("counts", {})
+            if counts.get("build_complete_v1_requirements") != 72:
+                fail("Bootstrap manifest must declare 72 build-complete V1 requirements", errors)
+            if counts.get("v1_implementation_tickets") != 160:
+                fail("Bootstrap manifest must declare 160 V1 implementation tickets", errors)
 
     adr_files = sorted((ROOT / "docs/adr").glob("[0-9][0-9][0-9][0-9]-*.md"))
     decision_adrs = [path for path in adr_files if not path.name.startswith("0000-")]
@@ -113,8 +124,29 @@ def validate() -> list[str]:
     if requirements.is_file():
         requirement_text = requirements.read_text(encoding="utf-8")
         ids = set(re.findall(r"\bAX-[A-Z]+-\d{3}\b", requirement_text))
-        if len(ids) != 48:
-            fail(f"Expected 48 unique master requirement IDs, found {len(ids)}", errors)
+        if len(ids) != 72:
+            fail(f"Expected 72 unique build-complete V1 requirement IDs, found {len(ids)}", errors)
+        if requirement_text.count("V1-BUILD-REQUIRED") < 72:
+            fail("Every AXIOM requirement must be marked V1-BUILD-REQUIRED", errors)
+
+    backlog = ROOT / "docs/roadmap/v1-160-tickets.md"
+    if backlog.is_file():
+        backlog_text = backlog.read_text(encoding="utf-8")
+        ticket_ids = re.findall(r"^\| (AX-\d{3}) ", backlog_text, re.MULTILINE)
+        expected_tickets = [f"AX-{number:03d}" for number in range(1, 161)]
+        if ticket_ids != expected_tickets:
+            fail("Complete backlog must contain AX-001 through AX-160 exactly once and in order", errors)
+        referenced_ids = set(re.findall(r"\bAX-[A-Z]+-\d{3}\b", backlog_text))
+        unresolved = sorted(referenced_ids.difference(ids if requirements.is_file() else set()))
+        if unresolved:
+            fail(f"Backlog references unknown requirements: {', '.join(unresolved)}", errors)
+
+    directive = ROOT / "docs/source/OWNER-DIRECTIVE-V1-BUILD-COMPLETE.md"
+    if directive.is_file():
+        directive_text = directive.read_text(encoding="utf-8").lower()
+        for term in ("blockchain", "wager", "pyramid", "custom silicon", "v1-build-required"):
+            if term not in directive_text:
+                fail(f"Owner directive is missing mandatory V1 term: {term}", errors)
 
     markdown_link_pattern = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
     for markdown_path in ROOT.rglob("*.md"):
@@ -164,7 +196,8 @@ def main() -> int:
     print("AXIOM-XIII repository validation passed.")
     print(f"Master specification SHA-256: {EXPECTED_MASTER_SHA256}")
     print("Mandatory ADRs: 25")
-    print("Master requirements: 48")
+    print("Build-complete V1 requirements: 72")
+    print("Implementation tickets: 160")
     return 0
 
 
