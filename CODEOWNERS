@@ -1,0 +1,22 @@
+# AXIOM-XIII CODEOWNERS
+#
+# This file intentionally contains no wildcard owner until the repository owner
+# assigns valid GitHub users or teams. Section 73.3 of the master specification
+# requires every directory to have named human code owners; AI agents may never
+# be the sole owner or approver of a critical system.
+#
+# Before implementation begins, replace this placeholder with valid ownership,
+# including more restrictive ownership for:
+# - production signing and release infrastructure
+# - wallet custody and recovery
+# - chain validator operations
+# - anti-cheat and fraud systems
+# - secure boot, firmware, kernel, and driver internals
+# - proprietary model weights and restricted evaluation data
+#
+# Example only:
+# *                       @organization/core-maintainers
+# /engine/render/         @organization/rendering
+# /chain/                 @organization/chain-security
+# /pyramid/               @organization/pyramid-platform
+# /.github/workflows/     @organization/security-release

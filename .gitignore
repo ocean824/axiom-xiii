@@ -1,0 +1,65 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# IDE and operating system
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node and web tooling
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+.next/
+
+# C, C++, Rust, CMake, and generated build output
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+target/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.pdb
+
+# Engine and content caches
+.cache/
+DerivedDataCache/
+Intermediate/
+Saved/
+Binaries/
+*.tmp
+*.log
+
+# Generated evidence and local artifacts
+artifacts/
+reports/local/
+coverage-report/
+
+# Large source assets should use the approved storage/LFS policy after ADR review

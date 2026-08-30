@@ -1,0 +1,54 @@
+{
+  "project": "AXIOM-XIII",
+  "version": "V1.0 Draft",
+  "repository_status": "documentation-first bootstrap",
+  "confidentiality": "proprietary-private",
+  "canonical_source": {
+    "path": "docs/source/AXIOM-XIII-V1-Master-Specification.md",
+    "original_filename": "Pasted_content.txt",
+    "sha256": "dc7feae7b999e8c4802ef8fb67fa894c68e75e8cf1f601132ccb162f6565909d",
+    "preservation": "byte-for-byte"
+  },
+  "entrypoints": {
+    "human": "README.md",
+    "codespring": "CODESPRING.md",
+    "architecture": "docs/architecture/system-map.md",
+    "analysis": "docs/analysis/deep-analysis.md",
+    "requirements": "docs/requirements/requirements-register.md",
+    "acceptance": "docs/requirements/acceptance-matrix.md",
+    "risks": "docs/requirements/risk-register.md",
+    "roadmap": "docs/roadmap/implementation-roadmap.md",
+    "tickets": "docs/roadmap/initial-100-tickets.md",
+    "adrs": "docs/adr/README.md",
+    "threat_model": "docs/security/threat-model-v0.md",
+    "provenance_policy": "docs/legal/provenance-and-license-policy-v0.md"
+  },
+  "locked_navigation": [
+    "GAMES",
+    "MEDIA",
+    "SOCIAL",
+    "DEV",
+    "STORE",
+    "PROFILE",
+    "WALLET"
+  ],
+  "branches": [
+    "main",
+    "staging",
+    "develop"
+  ],
+  "counts": {
+    "master_requirements": 48,
+    "mandatory_open_adrs": 25,
+    "initial_tickets": 100,
+    "roadmap_phases": 11
+  },
+  "implementation_authority": {
+    "production_deployment": false,
+    "token_issuance": false,
+    "wallet_custody": false,
+    "real_money_prizes": false,
+    "public_release": false,
+    "production_signing_access": false
+  }
+}

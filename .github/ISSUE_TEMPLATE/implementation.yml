@@ -1,0 +1,96 @@
+name: Implementation work item
+description: Requirement-first implementation, research, or verification task
+title: "[DOMAIN] "
+labels:
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every work item must be traceable, owned, bounded, and verifiable. Do not use this form to authorize production deployment, custody, token issuance, real-money prizes, signing-key access, or public release.
+  - type: input
+    id: requirements
+    attributes:
+      label: Requirement IDs
+      description: Parent and child requirements affected by this work.
+      placeholder: AX-FMT-001, AX-QA-001
+    validations:
+      required: true
+  - type: dropdown
+    id: maturity
+    attributes:
+      label: Maturity class
+      options:
+        - V1-PRODUCTION
+        - V1-PREVIEW
+        - V1-EXPERIMENTAL
+        - V1-ARCHITECTED
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Human owner
+      placeholder: GitHub user or team
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended outcome
+      description: State the observable user, system, or research result.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and exclusions
+      description: Explain what is included and explicitly not included.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and blocking ADRs
+      description: List interfaces, schemas, services, repositories, vendors, and decisions.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Provide objective pass/fail statements.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, privacy, legal, and provenance impact
+      description: Identify trust zones, sensitive data, permissions, licenses, and required reviews.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Test and evidence plan
+      description: State required unit, integration, fuzz, gameplay, network, performance, security, migration, and reproducibility evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Rollback and recovery
+      description: Explain how to reverse this change safely.
+    validations:
+      required: true
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: This task does not silently resolve an open ADR.
+          required: true
+        - label: This task does not grant an agent production, signing, wallet, or custody authority.
+          required: true
+        - label: Experimental work will not become a production dependency without its replacement gate.
+          required: true
